@@ -67,14 +67,6 @@ namespace OpenAI
                 { "OpenAI-Beta", "assistants=v1"}
             };
 
-            if (Settings.Info.BaseRequestUrlFormat.Contains(OpenAISettingsInfo.OpenAIDomain) &&
-                (string.IsNullOrWhiteSpace(Authentication.Info.ApiKey) ||
-                 (!Authentication.Info.ApiKey.Contains(OpenAIAuthInfo.SecretKeyPrefix) &&
-                  !Authentication.Info.ApiKey.Contains(OpenAIAuthInfo.SessionKeyPrefix))))
-            {
-                throw new InvalidCredentialException($"{nameof(Authentication.Info.ApiKey)} must start with '{OpenAIAuthInfo.SecretKeyPrefix}'");
-            }
-
             if (Settings.Info.UseOAuthAuthentication)
             {
                 headers.Add("Authorization", Rest.GetBearerOAuthToken(Authentication.Info.ApiKey));

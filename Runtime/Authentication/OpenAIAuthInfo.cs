@@ -26,11 +26,6 @@ namespace OpenAI
 
             if (!string.IsNullOrWhiteSpace(organizationId))
             {
-                if (!organizationId.Contains(OrganizationPrefix))
-                {
-                    throw new InvalidCredentialException($"{nameof(organizationId)} must start with '{OrganizationPrefix}'");
-                }
-
                 this.organizationId = organizationId;
             }
         }
