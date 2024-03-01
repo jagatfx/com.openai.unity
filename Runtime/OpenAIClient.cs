@@ -69,13 +69,6 @@ namespace OpenAI
                 { "User-Agent", "com.openai.unity" }
 #endif
             };
-            if (!Settings.Info.BaseRequestUrlFormat.Contains(OpenAISettingsInfo.AzureOpenAIDomain) &&
-                (string.IsNullOrWhiteSpace(Authentication.Info.ApiKey) ||
-                 (!Authentication.Info.ApiKey.Contains(OpenAIAuthInfo.SecretKeyPrefix) &&
-                  !Authentication.Info.ApiKey.Contains(OpenAIAuthInfo.SessionKeyPrefix))))
-            {
-                throw new InvalidCredentialException($"{nameof(Authentication.Info.ApiKey)} must start with '{OpenAIAuthInfo.SecretKeyPrefix}'");
-            }
 
             if (Settings.Info.UseOAuthAuthentication)
             {
